@@ -1,0 +1,17 @@
+footer.footer-container
+    div.newsletter-container
+    h1.heading1 Stay Connected
+    p.para1 Sign up for new release of albums and songs.
+    div.subscribe-container
+      form.subscribe-container(action="/subscribe" method="POST")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        input.mail-input(type="email", placeholder="E-Mail" name="email" required)
+        input.subscribe-button(type="submit", value="SUBSCRIBE")
+    div.social-container
+        img.social-icon(src="/images/facebook.png", alt="facebook")
+        img.social-icon(src="/images/instagram.png", alt="instagram")
+        img.social-icon(src="/images/youtube.png", alt="youtube")
+        img.social-icon.p-1(src="/images/twitter.png", alt="twitter")
+    div.d-flex.flex-row.justify-content-center
+        img.copyright-image(src="/images/copyright.png", alt="Copyright")          
+        h1.bottom-heading 2025 EMIFY, Inc.

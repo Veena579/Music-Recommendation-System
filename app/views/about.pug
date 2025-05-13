@@ -1,20 +1,7 @@
-doctype html
-html
-  head
-    title EMIFY - About Us
-    link(rel="stylesheet", href="about.css")
-  body
-    nav.navbar
-      .logo EMIFY
-      ul.nav-links
-        li
-          a(href="/") HOME
-        li
-          a(href="/login") RECOMMENDATIONS
-        li
-          a(href="/login") LOGIN
+extends layout
 
-    main.container
+block content
+    .container
       .about-section
         h1 About EMIFY - Your Personalized Music Companion
         p EMIFY is a music recommendation system designed to enhance your listening experience based on your **mood and favorite genres**.
