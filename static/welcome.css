@@ -1,0 +1,64 @@
+* { 
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.bg-container {
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center; /* Center the background image */
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end; /* Change alignment from 'end' to 'center' to center the text */
+}
+
+.text-container {
+    text-align: center;
+    margin-right: 64px;
+}
+
+.top-heading {
+    font-size: 68px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 4px black;
+}
+
+.top-para {
+    font-size: 24px;
+    color: white;
+    margin: 0;
+}
+
+.text-style {
+    color: hsl(2, 72%, 67%);
+    font-size: 80px;
+}
+
+.top-button {
+    width: 200px; /* Increased width for better button size */
+    height: 50px; /* Increased height for better button size */
+    text-decoration: none;
+    border-radius: 32px;
+    background-color: rgb(249, 12, 12);
+    border: none;
+    color: white;
+    font-size: 18px;
+    margin-top: 30px;
+    padding: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Smooth transition effect for background color */
+}
+
+.top-button:hover {
+    background-color: rgb(200, 12, 12); /* Darken button on hover */
+}

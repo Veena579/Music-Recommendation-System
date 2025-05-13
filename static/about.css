@@ -1,0 +1,126 @@
+/* About Page Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body and layout styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Navbar styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #04072e;
+  padding: 20px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #07435d;
+}
+
+.nav-links .active {
+  color: #ff4d4d;
+}
+
+/* Main content container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 20px 20px; /* Adjust padding to avoid navbar overlap */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Section styles */
+.about-section, .how-it-works, .benefits {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  max-width: 800px;
+}
+
+.about-section h1, .how-it-works h2, .benefits h2 {
+  color: #ff4d4d;
+}
+
+.about-section p, .how-it-works ul, .benefits ul {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 18px;
+  margin: 10px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+ul li::before {
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+}
+
+/* Responsive design (optional) */
+@media (max-width: 768px) {
+  .nav-links {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .about-section, .how-it-works, .benefits {
+      padding: 20px;
+      margin: 20px 10px;
+  }
+
+  .container {
+      padding: 80px 10px 20px;
+  }
+}

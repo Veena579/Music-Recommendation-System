@@ -1,0 +1,61 @@
+doctype html
+html
+  head
+    title EMIFY - Songs
+    link(rel="stylesheet", href="/songs.css")
+  body
+    h1 Songs List
+
+    // Filter Form
+    form(method="get", action="/songs")
+      input(type="text", name="search", placeholder="Search by title or artist", value=search || '')
+      select(name="mood")
+        option(value="") All Moods
+        option(value="Happy", selected=mood === "Happy") Happy
+        option(value="Sad", selected=mood === "Sad") Sad
+        option(value="Energetic", selected=mood === "Energetic") Energetic
+        option(value="Calm", selected=mood === "Calm") Calm
+      select(name="genre")
+        option(value="") All Genres
+        option(value="Pop", selected=genre === "Pop") Pop
+        option(value="Jazz", selected=genre === "Jazz") Jazz
+        option(value="Rock", selected=genre === "Rock") Rock
+        option(value="Classical", selected=genre === "Classical") Classical
+      button(type="submit") Apply Filters
+
+    table(border="1")
+      thead
+        tr
+          th ID
+          th Title
+          th Artist
+          th Genre
+          th Mood
+          th Action
+          th Details
+      tbody
+        each item, index in songs
+          tr
+            td #{item.id}
+            td #{item.title}
+            td #{item.artist}
+            td #{item.genre}
+            td #{item.mood}
+            td 
+              button(onclick=`playSong('${item.url}')`) ▶️ Play
+            td
+              button.details-button(type="button", onclick=`window.open('/songs/${item.id}', '_blank')`) ℹ️ Details
+
+
+        
+    audio#player(controls style="margin-top:20px; display:none;")
+
+    script.
+      function playSong(url) {
+        const player = document.getElementById('player');
+        player.src = url.replace(/\\\\/g, '/').replace(/^"|"$/g, '').replace('D:', 'http://localhost:3000');
+        player.style.display = 'block';
+        player.play();
+      }
+
+      

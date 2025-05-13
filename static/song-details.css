@@ -1,0 +1,66 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background-size: cover;
+    animation: gradientBG 15s ease infinite;
+    color: #f0f0f0;
+    background-image: url("images/ma.jpg");
+    padding-right: 380px;
+  }
+  
+  /* Animated Gradient Background */
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Page Title */
+  h1 {
+    text-align: center;
+    color: #00ffd5;
+    font-size: 3rem;
+    text-shadow: 0 0 15px #00ffd5;
+    margin-bottom: 30px;
+  }
+  
+  h3 {
+    color: #ffca28;
+    margin-top: 5px;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  li {
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    text-align: center;
+  }
+  
+  
+  .back-button {
+    background-color: #ff3399;
+    color: #121212;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 30px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #ffffff;
+    color: #000000;
+  }

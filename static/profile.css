@@ -1,0 +1,101 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #04072e; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-links a.active, .nav-links a:hover {
+  background: #ff5a5a;
+  color: white;
+}
+
+/* Profile Card */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 6%;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-header img.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profile-header h1 {
+  font-size: 2em;
+  margin-top: 10px;
+}
+
+.profile-header p.email {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.profile-details h2 {
+  font-size: 1.6em;
+  margin-top: 20px;
+}
+
+.profile-details p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.profile-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-details li {
+  font-size: 1.2em;
+  color: #555;
+  margin: 5px 0;
+}
+

@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title EMIFY - Profile
+    link(rel="stylesheet", href="/profile.css")
+  body
+    nav.navbar
+      div.logo EMIFY
+      ul.nav-links
+        li: a(href="/") HOME
+        li: a(href="/music") RECOMMENDATIONS
+        li: a(href="/logout") LOGOUT
+
+    .container
+      .profile-header
+        img.profile-img(src="https://via.placeholder.com/150", alt="User's profile picture")
+        //h1 #{user.username}
+        //p.email #{user.email}
+        
+      //.profile-details
+        h2 Mood History
+        ul
+          each mood in user.moodHistory
+            li #{mood}

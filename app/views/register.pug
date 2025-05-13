@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    title Emify Register
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/register.css")
+  body
+    .register-container
+      .register-box
+        h2 Create an Account
+        form(action="/submit" method="POST")
+          .form-group
+            label(for="username") Username
+            input#username(type="text" name="username" placeholder="Username" required)
+          .form-group
+            label(for="email") Email
+            input#email(type="email" name="email" placeholder="Email" required)
+          .form-group
+            label(for="password") Password
+            input#password(type="password" name="password" placeholder="Password" required)
+          .form-group
+            label(for="confirm-password") Confirm Password
+            input#confirm-password(type="password" name="confirm-password" placeholder="Confirm Password" required)
+          .form-group
+            button.site-btn(type="submit") Register
+        p Already have an account? 
+          a(href="/login") Login here

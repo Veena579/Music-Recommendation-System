@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title= song.title + ' - Details'
+    link(rel="stylesheet", href="/song-details.css")
+  body 
+    h1= song.title
+    h3 by #{song.artist}
+
+    ul
+      li
+        strong Genre: 
+        | #{song.genre}
+      li
+        strong Mood: 
+        | #{song.mood}
+      li
+        strong Album: 
+        | #{song.album || 'Not Available'}
+      li
+        strong Year: 
+        | #{song.year || 'Unknown'}
+      li
+        strong Duration: 
+        | #{song.duration || 'Unknown'}
+      li
+        strong Lyrics: 
+        | #{song.lyrics || 'Lyrics not available'}
+        br
+        button(onclick="window.location.href='/songs'", class="back-button") ← Back to song list
+

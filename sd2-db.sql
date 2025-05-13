@@ -11,56 +11,47 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+-- Users Table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+-- Songs Table
+CREATE TABLE songs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    artist VARCHAR(255) NOT NULL,
+    genre VARCHAR(100) NOT NULL,
+    mood VARCHAR(100) NOT NULL,
+    url VARCHAR(500) NOT NULL
+);
 
---
--- Database: `sd2-db`
---
+-- Mood History Table
+CREATE TABLE mood_history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    mood VARCHAR(100),
+    genre VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
 
--- --------------------------------------------------------
+-- Insert Sample Users
+INSERT INTO users (username, email, password_hash) VALUES
+('john_doe', 'john@example.com', 'hashed_password1'),
+('jane_smith', 'jane@example.com', 'hashed_password2');
 
---
--- Table structure for table `test_table`
---
+-- Insert Sample Songs
+INSERT INTO songs (title, artist, genre, mood, url) VALUES
+('Happy', 'Pharrell Williams', 'Pop', 'Happy', 'https://example.com/happy.mp3'),
+('Someone Like You', 'Adele', 'Pop', 'Sad', 'https://example.com/someone_like_you.mp3'),
+('Bohemian Rhapsody', 'Queen', 'Rock', 'Energetic', 'https://example.com/bohemian_rhapsody.mp3'),
+('Clair de Lune', 'Debussy', 'Classical', 'Calm', 'https://example.com/clair_de_lune.mp3');
 
-CREATE TABLE `test_table` (
-  `id` int NOT NULL,
-  `name` varchar(512) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `test_table`
---
-
-INSERT INTO `test_table` (`id`, `name`) VALUES
-(1, 'Lisa'),
-(2, 'Kimia');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `test_table`
---
-ALTER TABLE `test_table`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `test_table`
---
-ALTER TABLE `test_table`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO mood_history (user_id, mood, genre) VALUES
+(1, 'Happy', 'Pop'),
+(2, 'Sad', 'Pop'),
+(1, 'Energetic', 'Rock');
