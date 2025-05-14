@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    font-family: "Nunito", sans-serif;
 }
 
 nav {
@@ -12,7 +13,7 @@ nav {
     align-items: center;
     background-color: #04072e;
     padding: 20px 30px;
-    width: 100vw;
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
@@ -57,6 +58,15 @@ nav {
 
 .nav-links a:hover {
     color: #07435d;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .bg-container {
@@ -272,6 +282,25 @@ ul li::before {
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #04072e;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    padding: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
   .about-section, .how-it-works, .benefits {
       padding: 20px;
       margin: 20px 10px;
