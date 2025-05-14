@@ -28,50 +28,7 @@ app.use(
 app.get("/", (req, res) => res.render("home"));
 app.get("/login", (req, res) => res.render("login"));
 app.get("/register", (req, res) => res.render("register"));
-app.get("/profile", (req, res) => res.render("profile"));
 app.get("/about", (req, res) => res.render("about"));
-
-// REGISTER
-app.post("/submit", async (req, res) => {
-  const { username, email, password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  try {
-    await db.query(
-      "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-      [username, email, hashedPassword]
-    );
-    res.redirect("/login");
-  } catch (error) {
-    console.error(error);
-    res.send("Error registering user");
-  }
-});
-
-// LOGIN
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const users = await db.query("SELECT * FROM users WHERE email = ?", [email]);
-    if (users.length > 0) {
-      const user = users[0];
-      const isMatch = await bcrypt.compare(password, user.password);
-
-      if (isMatch) {
-        req.session.user = user;
-        res.redirect("/profile");
-      } else {
-        res.send("Incorrect password");
-      }
-    } else {
-      res.send("User not found");
-    }
-  } catch (error) {
-    console.error(error);
-    res.send("Error logging in");
-  }
-});
 
 // SONG LIST WITH FILTER
 app.get("/songs", async (req, res) => {

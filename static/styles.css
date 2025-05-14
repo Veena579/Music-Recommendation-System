@@ -226,7 +226,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(8, 35, 80, 0.986);
+  background-color: rgba(5, 25, 60, 0.986);
   background-size: cover;
   margin-top: 80px;
 }
