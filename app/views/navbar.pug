@@ -1,19 +1,34 @@
-nav
-  .logo EMIFY
-  button.hamburger(type="button" aria-label="Toggle menu" onclick="toggleMenu()") ☰
-  ul.nav-links
-    li
-      a(href="/") Home
-    li
-      a(href="/about") About
-    li
-      a(href="/login") Login
-    li
-      a.register(href="/register") Register
-
-// JavaScript at the bottom
-script.
-  function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
-  }
+nav.navbar.navbar-expand-lg.nav-style.fixed-top
+  .container-fluid.d-flex.justify-content-between
+    a.navbar-brand.logo(href="/") EMIFY
+    button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav.ms-auto
+        if url !== '/'
+          li.nav-item
+            a.nav-link(href="/") Home
+        li.nav-item
+            a.nav-link(href="/about") About
+        if loggedIn
+          
+          li.nav-item.dropdown
+            a#userDropdown.nav-link.dropdown-toggle(href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false")
+              | Hi! 
+              span.fw-bold #{username.charAt(0).toUpperCase() + username.slice(1)}
+            ul.dropdown-menu.menu-style.dropdown-menu-end(aria-labelledby="userDropdown")
+              li
+                a.dropdown-item(href="/profile") Profile
+              li
+                a.dropdown-item(href="/new") Add Song
+              li
+                a.dropdown-item(href="/playlists") Playlists
+              li
+                hr.dropdown-divider
+              li
+                a.dropdown-item(href="/logout") Logout
+        else
+          li.nav-item
+            a.nav-link(href="/login") Login
+          li.nav-item
+            a.nav-link(href="/register") Register

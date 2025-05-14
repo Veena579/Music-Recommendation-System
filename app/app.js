@@ -1,10 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
-
-const app = express();
 const { body, validationResult } = require('express-validator');
 
+const app = express();
 const User = require('./models/users');
 const db = require('./services/db');
 
@@ -17,11 +16,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   session({
-    secret: 'your_secret_key',
+    secret: process.env.SESSION_SECRET || 'your_secret_key',
     resave: false,
     saveUninitialized: true,
   })
 );
+
+// Pass session data to views
+app.use((req, res, next) => {
+  res.locals.loggedIn = !!req.session.user;
+  res.locals.username = req.session.user ? req.session.user.username : null;
+  res.locals.url = req.url;
+  next();
+});
 
 // Middleware to check authentication
 function isAuthenticated(req, res, next) {
@@ -49,7 +56,7 @@ app.post(
       return res.render('login', { error: errors.array()[0].msg });
     }
     try {
-      const { email, password } = req.body; // Fix: Extract email and password from req.body
+      const { email, password } = req.body;
       const user = await User.findByEmail(email);
       if (!user) {
         return res.render('login', { error: 'Email not registered' });
@@ -69,7 +76,6 @@ app.post(
   }
 );
 
-// Registration
 app.post(
   '/submit',
   [
@@ -93,7 +99,7 @@ app.post(
     try {
       const user = await User.create({ username, email, password });
       req.session.user = { id: user.id, username: user.username, email: user.email };
-      res.redirect('/login');
+      res.redirect('/songs');
     } catch (error) {
       console.error('Registration error:', error);
       res.render('register', { error: error.message });
@@ -101,13 +107,15 @@ app.post(
   }
 );
 
-// Logout
 app.get('/logout', (req, res) => {
-  req.session.destroy();
-  res.redirect('/login');
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Session destruction error:', err);
+    }
+    res.redirect('/login');
+  });
 });
 
-// User Profile
 app.get('/profile', isAuthenticated, async (req, res) => {
   try {
     const history = await User.getMoodHistory(req.session.user.id);
@@ -120,7 +128,6 @@ app.get('/profile', isAuthenticated, async (req, res) => {
 
 app.use('/songs', express.static('static/songs'));
 
-// Song List with Filter
 app.get('/songs', isAuthenticated, async (req, res) => {
   const { mood, genre, search } = req.query;
   let sql = 'SELECT * FROM songs WHERE 1=1';
@@ -170,7 +177,6 @@ app.get('/songs/:id', isAuthenticated, async (req, res) => {
   }
 });
 
-// Songs CRUD
 app.get('/new', isAuthenticated, (req, res) => {
   res.render('add-song');
 });
@@ -187,7 +193,7 @@ app.post('/add-song', isAuthenticated, async (req, res) => {
     artist,
     genre,
     mood,
-    `/songs/${title.replace(/\s+/g, '-').toLowerCase()}.mp3`, // Placeholder URL
+    `/songs/${title.replace(/\s+/g, '-').toLowerCase()}.mp3`,
     album || null,
     year || null,
     duration || null,
@@ -203,7 +209,6 @@ app.post('/add-song', isAuthenticated, async (req, res) => {
   }
 });
 
-// Newsletter Subscription
 app.post('/subscribe', async (req, res) => {
   const { email } = req.body;
 
@@ -217,12 +222,10 @@ app.post('/subscribe', async (req, res) => {
   }
 });
 
-// 404
 app.use((req, res) => {
   res.status(404).render('error', { url: req.originalUrl });
 });
 
-// Server
 app.listen(3000, () => {
   console.log('Server running at http://127.0.0.1:3000/');
 });
