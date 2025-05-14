@@ -1,17 +1,15 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
-const db = require('./services/db');
-
-
-
 
 
 const app = express();
+const db = require('./services/db');
 
 app.use(express.static("static"));
 app.set('view engine', 'pug');
 app.set('views', './app/views');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -29,6 +27,8 @@ app.get("/", (req, res) => res.render("home"));
 app.get("/login", (req, res) => res.render("login"));
 app.get("/register", (req, res) => res.render("register"));
 app.get("/about", (req, res) => res.render("about"));
+
+
 
 // SONG LIST WITH FILTER
 app.get("/songs", async (req, res) => {
