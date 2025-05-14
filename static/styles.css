@@ -120,6 +120,72 @@ nav {
 .top-button:hover {
     background-color: rgb(200, 12, 12); /* Darken button on hover */
 }
+/* add-song styles */
+.container {
+  max-width: 800px;
+  margin: 100px auto 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.site-btn {
+  background-color: #c90727;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.site-btn:hover {
+  background-color: #a00520;
+}
+
+.error {
+  color: #c90727;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  background-color: #c90727;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  background-color: #a00520;
+}
 
 .footer-container {
     display: flex;

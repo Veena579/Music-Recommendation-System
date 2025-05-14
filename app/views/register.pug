@@ -9,13 +9,15 @@ html(lang="en")
     .register-container
       .register-box
         h2 Create an Account
+        if error
+          p.error #{error}
         form(action="/submit" method="POST")
           .form-group
             label(for="username") Username
-            input#username(type="text" name="username" placeholder="Username" required)
+            input#username(type="text" name="username" placeholder="Username" value= username || '' required)
           .form-group
             label(for="email") Email
-            input#email(type="email" name="email" placeholder="Email" required)
+            input#email(type="email" name="email" placeholder="Email" value= email || '' required)
           .form-group
             label(for="password") Password
             input#password(type="password" name="password" placeholder="Password" required)

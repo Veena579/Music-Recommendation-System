@@ -117,3 +117,11 @@ ALTER TABLE `users`
 ALTER TABLE `mood_history`
   ADD CONSTRAINT `mood_history_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
+
+CREATE TABLE `subscribers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NOT NULL,
+  `subscribed_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

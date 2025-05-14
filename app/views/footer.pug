@@ -4,7 +4,6 @@ footer.footer-container
         p.para1 Sign up for new release of albums and songs.
         div.subscribe-container
         form.subscribe-container(action="/subscribe" method="POST")
-            input(type="hidden" name="_csrf" value=csrfToken)
             input.mail-input(type="email", placeholder="E-Mail" name="email" required)
             input.subscribe-button(type="submit", value="SUBSCRIBE")
     div.social-container.d-flex.flex-column.justify-content-center

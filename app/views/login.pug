@@ -9,6 +9,8 @@ html(lang="en")
     .login-container
       .login-box
         h2 Login to EMIFY
+        if error
+          p.error #{error}
         form(action="/login" method="POST")
           .form-group
             label(for="email") Email

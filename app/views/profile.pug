@@ -1,0 +1,13 @@
+extends layout
+block content
+  .container
+    h1 Welcome, #{user.username}
+    h2 Your Mood History
+    if error
+      p.error #{error}
+    if history.length
+      ul
+        each entry in history
+          li #{entry.mood} - #{entry.genre} (#{entry.created_at})
+    else
+      p No mood history yet.

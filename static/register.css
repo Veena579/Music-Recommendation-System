@@ -78,4 +78,10 @@ body {
   p a:hover {
     text-decoration: underline;
   }
-  
+
+.error {
+  color: #e50914;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}

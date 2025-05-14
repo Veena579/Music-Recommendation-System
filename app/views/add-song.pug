@@ -1,0 +1,41 @@
+extends layout
+block content
+  .container
+    h1 Add New Song
+    if error
+      p.error #{error}
+    form(method='POST', action='/add-song')
+      .form-group
+        label(for='title') Title
+        input#title(type='text', name='title', required)
+      .form-group
+        label(for='artist') Artist
+        input#artist(type='text', name='artist', required)
+      .form-group
+        label(for='genre') Genre
+        select#genre(name='genre', required)
+          option(value='Pop') Pop
+          option(value='Jazz') Jazz
+          option(value='Rock') Rock
+          option(value='Classical') Classical
+      .form-group
+        label(for='mood') Mood
+        select#mood(name='mood', required)
+          option(value='Happy') Happy
+          option(value='Sad') Sad
+          option(value='Energetic') Energetic
+          option(value='Calm') Calm
+          option(value='Romantic') Romantic
+      .form-group
+        label(for='album') Album (Optional)
+        input#album(type='text', name='album')
+      .form-group
+        label(for='year') Year (Optional)
+        input#year(type='number', name='year')
+      .form-group
+        label(for='duration') Duration (Optional)
+        input#duration(type='text', name='duration', placeholder='e.g., 3:45')
+      .form-group
+        label(for='lyrics') Lyrics (Optional)
+        textarea#lyrics(name='lyrics', rows='5')
+      button.site-btn(type='submit') Add Song
