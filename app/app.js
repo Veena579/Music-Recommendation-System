@@ -28,7 +28,6 @@ app.use(
 app.get("/", (req, res) => res.render("home"));
 app.get("/login", (req, res) => res.render("login"));
 app.get("/register", (req, res) => res.render("register"));
-app.get("/music", (req, res) => res.render("music"));
 app.get("/profile", (req, res) => res.render("profile"));
 app.get("/about", (req, res) => res.render("about"));
 
@@ -132,8 +131,6 @@ app.post("/add-song", (req, res) => {
   // Redirect to song list or confirmation page
   res.redirect("/songs");
 });
-
-
 
 
 // 404
