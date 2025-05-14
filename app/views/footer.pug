@@ -7,11 +7,12 @@ footer.footer-container
             input(type="hidden" name="_csrf" value=csrfToken)
             input.mail-input(type="email", placeholder="E-Mail" name="email" required)
             input.subscribe-button(type="submit", value="SUBSCRIBE")
-    div.social-container.d-flex.flex-row.justify-content-center
-        img.social-icon(src="/images/facebook.png", alt="facebook")
-        img.social-icon(src="/images/instagram.png", alt="instagram")
-        img.social-icon(src="/images/youtube.png", alt="youtube")
-        img.social-icon.p-1(src="/images/twitter.png", alt="twitter")
-    div.d-flex.flex-row.justify-content-center
-        img.copyright-image(src="/images/copyright.png", alt="Copyright")          
-        h1.bottom-heading 2025 EMIFY, Inc.
+    div.social-container.d-flex.flex-column.justify-content-center
+        div.d-flex.flex-row.justify-content-center
+            img.social-icon(src="/images/facebook.png", alt="facebook")
+            img.social-icon(src="/images/instagram.png", alt="instagram")
+            img.social-icon(src="/images/youtube.png", alt="youtube")
+            img.social-icon.p-1(src="/images/twitter.png", alt="twitter")
+        div.d-flex.flex-row.justify-content-center.mb-3
+            img.copyright-image(src="/images/copyright.png", alt="Copyright")          
+            h1.bottom-heading 2025 EMIFY, Inc.

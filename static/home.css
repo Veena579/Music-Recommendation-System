@@ -6,63 +6,6 @@ body {
     margin: 0;
 }
 
-.bg-container {
-    background-image: url('images/bg.jpg');
-    background-size: cover;
-    background-position: center; /* Center the background image */
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: end; /* Change alignment from 'end' to 'center' to center the text */
-}
-
-.text-container {
-    text-align: center;
-    margin-right: 64px;
-}
-
-.top-heading {
-    font-size: 68px;
-    font-weight: 700;
-    color: white;
-    text-shadow: 2px 4px black;
-}
-
-.top-para {
-    font-size: 24px;
-    color: white;
-    margin: 0;
-}
-
-.text-style {
-    color: hsl(2, 72%, 67%);
-    font-size: 80px;
-}
-
-.top-button {
-    width: 200px; /* Increased width for better button size */
-    height: 50px; /* Increased height for better button size */
-    text-decoration: none;
-    border-radius: 32px;
-    background-color: rgb(249, 12, 12);
-    border: none;
-    color: white;
-    font-size: 18px;
-    margin-top: 30px;
-    padding: 10px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: background-color 0.3s ease; /* Smooth transition effect for background color */
-}
-
-.top-button:hover {
-    background-color: rgb(200, 12, 12); /* Darken button on hover */
-}
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -116,32 +59,82 @@ nav {
     color: #07435d;
 }
 
+.bg-container {
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    height: 100vh;
+    align-items: end;
+}
+
+.text-container {
+    text-align: center;
+    margin-right: 64px;
+}
+
+.top-heading {
+    font-size: 68px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 4px black;
+}
+
+.top-para {
+    font-size: 24px;
+    color: white;
+    margin: 0;
+}
+
+.text-style {
+    color: hsl(2, 72%, 67%);
+    font-size: 80px;
+}
+
+.top-button {
+    width: 200px; /* Increased width for better button size */
+    height: 50px; /* Increased height for better button size */
+    text-decoration: none;
+    border-radius: 32px;
+    background-color: rgb(249, 12, 12);
+    border: none;
+    color: white;
+    font-size: 18px;
+    margin-top: 30px;
+    padding: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Smooth transition effect for background color */
+}
+
+.top-button:hover {
+    background-color: rgb(200, 12, 12); /* Darken button on hover */
+}
+
 .footer-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 30px;
-    margin-bottom: 30px;
 }
 
 .newsletter-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #04072e;
+    background-color: #ffffff;
     padding: 30px;
 }
 
 .heading1 {
     font-family: "Nunito", sans-serif;
-    color: white;
+    color: rgb(2, 10, 50);
     font-size: 20px;
     margin-top: 10px;
 }
 
 .para1 {
     font-family: "Nunito", sans-serif;
-    color: white;
+    color: rgb(2, 10, 50);
     font-size: 15px;
     margin: 24px;
     text-align: center;
@@ -159,23 +152,23 @@ nav {
     width: 300px;
     height: 40px;
     background-color: transparent;
-    color: white;
+    color: rgb(2, 10, 50);
     font-family: "Nunito", sans-serif;
     border-style: solid;
     border-radius: 2px;
-    border-color: rgb(95, 96, 95);
+    border-color: rgb(2, 10, 50);
     padding: 20px;
     transition: border-color 0.3s ease;
 }
 
 .mail-input:focus {
-    border-color: rgb(0, 0, 0);
+    border-color: rgb(255, 0, 0);
 }
 
 .subscribe-button {
-    background-color: white;
+    background-color: rgb(2, 10, 50);
     font-family: "Nunito", sans-serif;
-    color: black;
+    color: white;
     font-size: 12px;
     width: 140px;
     height: 40px;
@@ -186,7 +179,7 @@ nav {
 }
 
 .subscribe-button:hover {
-    background-color: rgb(0, 0, 0); 
+    background-color: rgb(251, 1, 1); 
     color: white;
 }
 
@@ -194,8 +187,9 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: start;
-    margin: 20px;
+    margin-top: 20px;
     align-items: center;
+    background-color: rgb(2, 10, 50);
 }
 
 .social-icon {
@@ -203,6 +197,8 @@ nav {
     height: 30px;
     margin: 20px;
     transition: transform 0.3s ease;
+    background-color: #ffffff;
+    padding: 3px;
 }
 
 .social-icon:hover {
@@ -212,11 +208,13 @@ nav {
 .copyright-image {
     width: 20px;
     height: 20px;
+    background-color: #ffffff;
+    padding: 3px;
 }
 
 .bottom-heading {
     font-family: "Nunito", sans-serif;
-    color: black;
+    color: rgb(250, 248, 248);
     font-size: 14px;
     margin-top: 2px;
     margin-left: 10px;
