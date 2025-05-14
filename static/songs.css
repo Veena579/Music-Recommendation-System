@@ -17,7 +17,7 @@ body {
 }
 
 /* Page Title */
-h1 {
+.songh1 {
   text-align: center;
   color: #00ffd5;
   font-size: 3rem;
@@ -26,7 +26,7 @@ h1 {
 }
 
 /* Filter Form */
-form {
+.sform {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
