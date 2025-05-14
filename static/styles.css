@@ -220,3 +220,93 @@ nav {
     margin-left: 10px;
     text-align: center;
 }
+
+/* About page styles */
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(8, 35, 80, 0.986);
+  background-size: cover;
+  margin-top: 80px;
+}
+
+/* Section styles */
+.about-section, .how-it-works, .benefits {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  max-width: 800px;
+}
+
+.about-section h1, .how-it-works h2, .benefits h2 {
+  color: #ff4d4d;
+}
+
+.about-section p, .how-it-works ul, .benefits ul {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 18px;
+  margin: 10px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+ul li::before {
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-section, .how-it-works, .benefits {
+      padding: 20px;
+      margin: 20px 10px;
+  }
+
+  .about-container {
+      padding: 80px 10px 20px;
+  }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+  .top-heading {
+      font-size: 36px;
+  }
+
+  .top-para {
+      font-size: 18px;
+  }
+
+  .top-button {
+      width: 150px;
+      height: 40px;
+      font-size: 16px;
+  }
+
+  .mail-input {
+      width: 200px;
+      height: 35px;
+      font-size: 14px;
+  }
+
+  .subscribe-button {
+      width: 120px;
+      height: 35px;
+      font-size: 12px;
+  }
+}
