@@ -43,7 +43,6 @@ app.get('/', (req, res) => res.render('home'));
 app.get('/about', (req, res) => res.render('about'));
 app.get('/login', (req, res) => res.render('login', { error: null }));
 app.get('/register', (req, res) => res.render('register', { error: null }));
-
 app.post(
   '/login',
   [
