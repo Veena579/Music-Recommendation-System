@@ -115,7 +115,7 @@ app.get('/logout', (req, res) => {
   });
 });
 
-app.get('/profile', isAuthenticated, async (req, res) => {
+app.get('/profile', isAuthenticated, async (req,res) => {
   try {
     const history = await User.getMoodHistory(req.session.user.id);
     res.render('profile', { user: req.session.user, history });
