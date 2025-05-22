@@ -1,0 +1,30 @@
+extend layout
+
+block content
+  .containerm
+    h1.m Welcome, #{user.username}
+    h2.m1 Your Mood History
+    if error
+      p.error1(id='flash-message') #{error}
+    if message
+      p.success2(id='flash-message') #{message}
+    if history && history.length
+      ul.mo
+        each entry in history
+          li.mo1
+            | #{entry.mood || 'Unknown'} - #{entry.genre || 'Unknown'} (#{entry.display_created_at || 'Unknown'})
+            form.m2(action=`/history/delete?user_id=${user.id}&mood=${encodeURIComponent(entry.mood || 'Unknown')}&genre=${encodeURIComponent(entry.genre || 'Unknown')}` method='POST' style='display:inline;')
+              button.m3(type='submit' onclick=`return confirm('Are you sure you want to delete all entries with mood "${entry.mood || 'Unknown'}" and genre "${entry.genre || 'Unknown'}"? Multiple entries may be deleted.')`) Delete
+    else
+      p No mood history yet.
+
+  //- JavaScript to auto-hide flash messages
+  script.
+    setTimeout(() => {
+      const flash = document.getElementById('flash-message');
+      if (flash) {
+        flash.style.transition = 'opacity 0.5s ease';
+        flash.style.opacity = '0';
+        setTimeout(() => flash.remove(), 500); // Remove from DOM after fade out
+      }
+    }, 4000); // Adjust time (ms) as needed

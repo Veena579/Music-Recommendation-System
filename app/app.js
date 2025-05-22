@@ -27,6 +27,7 @@ app.use((req, res, next) => {
   res.locals.loggedIn = !!req.session.user;
   res.locals.username = req.session.user ? req.session.user.username : null;
   res.locals.url = req.url;
+  res.set('Cache-Control', 'no-store');
   next();
 });
 
@@ -116,15 +117,6 @@ app.get('/logout', (req, res) => {
   });
 });
 
-app.get('/profile', isAuthenticated, async (req, res) => {
-  try {
-    const history = await User.getMoodHistory(req.session.user.id);
-    res.render('profile', { user: req.session.user, history });
-  } catch (error) {
-    console.error('Error fetching profile:', error);
-    res.render('profile', { user: req.session.user, history: [], error: 'Error loading history' });
-  }
-});
 
 app.use('/songs', express.static('static/songs'));
 
@@ -206,6 +198,64 @@ app.post('/add-song', isAuthenticated, async (req, res) => {
   } catch (error) {
     console.error('Error adding song:', error);
     res.render('add-song', { error: 'Error adding song' });
+  }
+});
+
+app.get('/history', isAuthenticated, async (req, res) => {
+  try {
+    const history = await User.getMoodHistory(req.session.user.id);
+    const message = req.query.message || null;
+    const error = req.query.error || null;
+    // Format created_at for display
+    const formattedHistory = Array.isArray(history) ? history.map(entry => ({
+      ...entry,
+      display_created_at: new Date(entry.created_at).toISOString().slice(0, 19).replace('T', ' ') // e.g., '2025-05-14 16:54:02'
+    })) : [];
+    res.render('history', { user: req.session.user, history: formattedHistory, error, message });
+  } catch (error) {
+    console.error('Error fetching history:', {
+      message: error.message,
+      code: error.code,
+      sqlMessage: error.sqlMessage,
+      stack: error.stack
+    });
+    res.render('history', { user: req.session.user, history: [], error: 'Error loading history', message: null });
+  }
+});
+
+app.get('history/delete', isAuthenticated, (req, res) => {
+  res.redirect('/history?error=Please use the delete button to remove entries');
+});
+
+app.post('/history/delete', isAuthenticated, async (req, res) => {
+  try {
+    const { user_id, mood, genre } = req.query;
+    console.log('Attempting to delete mood history entry:', { user_id, mood, genre, session_user_id: req.session.user.id });
+    if (!user_id || !mood || !genre) {
+      throw new Error('Missing required parameters');
+    }
+    if (isNaN(user_id) || parseInt(user_id) !== req.session.user.id) {
+      console.error('Unauthorized deletion attempt:', { user_id, session_user_id: req.session.user.id });
+      throw new Error('Unauthorized deletion attempt');
+    }
+    const result = await db.query(
+      'DELETE FROM mood_history WHERE user_id = ? AND mood = ? AND genre = ?',
+      [user_id, mood, genre]
+    );
+    if (!result || result.affectedRows === 0) {
+      console.error('deleteMoodHistory: No entries deleted', { result, user_id, mood, genre });
+      throw new Error('No matching mood history entry found');
+    }
+    console.log('Mood history entry deleted successfully:', { affectedRows: result.affectedRows });
+    res.redirect('/history?message=Entry deleted successfully');
+  } catch (error) {
+    console.error('Error deleting mood history:', {
+      message: error.message,
+      code: error.code,
+      sqlMessage: error.sqlMessage,
+      stack: error.stack
+    });
+    res.redirect('/history?error=Error deleting entry');
   }
 });
 
