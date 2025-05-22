@@ -44,7 +44,6 @@ app.get('/', (req, res) => res.render('home'));
 app.get('/about', (req, res) => res.render('about'));
 app.get('/login', (req, res) => res.render('login', { error: null }));
 app.get('/register', (req, res) => res.render('register', { error: null }));
-
 app.post(
   '/login',
   [
@@ -117,6 +116,15 @@ app.get('/logout', (req, res) => {
   });
 });
 
+app.get('/profile', isAuthenticated, async (req, res) => {
+  try {
+    const history = await User.getMoodHistory(req.session.user.id);
+    res.render('profile', { user: req.session.user, history });
+  } catch (error) {
+    console.error('Error fetching profile:', error);
+    res.render('profile', { user: req.session.user, history: [], error: 'Error loading history' });
+  }
+});
 
 app.use('/songs', express.static('static/songs'));
 
